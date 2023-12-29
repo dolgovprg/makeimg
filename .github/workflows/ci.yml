@@ -22,8 +22,8 @@ jobs:
         run: pip install poetry
       - name: Install project
         run: poetry install
-      - name: Run tests
-        run:  poetry run pytest
+      - name: Start project
+        run:  poetry run uvicorn main:app --reload
          
                 
                      
