@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10.11]
+        python-version: [3.10]
     steps:
       - uses: actions/checkout@v3
       - name: Staring Python ${{ matrix.python-version }}
@@ -22,8 +22,10 @@ jobs:
         run: pip install poetry
       - name: Install project
         run: poetry install
-      - name: Start project
-        run:  poetry run uvicorn main:app --reload
+      - name: Run tests
+        run:  poetry run pytest        
+      # - name: Start project
+      #   run:  poetry run uvicorn main:app --reload
          
                 
                      
