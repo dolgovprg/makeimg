@@ -23,22 +23,16 @@ async def root():
 
 @app.post("/img")
 async def convert_image(file: UploadFile = File(...)):
-    # image = Image.open(file.file)
 
-    # resized_image = image.resize((640, 480))
-
-    # with open(file.file, 'r+b') as f:
     with Image.open(file.file) as image:
         img_buffer = BytesIO()
-        cover = resizeimage.resize_cover(image, [200, 100])
+        cover = resizeimage.resize_cover(image, [640, 480])
         cover.save(img_buffer, image.format)
         img_buffer.seek(0)
         img_byte = img_buffer.read()
         img_base64 = base64.b64encode(img_byte)
 
     
-    # resized_image.save(img_buffer, format="PNG")
-
     return {"image_base64": img_base64}
 
 
