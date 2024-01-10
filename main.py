@@ -32,7 +32,6 @@ async def convert_image(file: UploadFile = File(...)):
         img_byte = img_buffer.read()
         img_base64 = base64.b64encode(img_byte)
 
-    
     return {"image_base64": img_base64}
 
 
