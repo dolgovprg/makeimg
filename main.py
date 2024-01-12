@@ -21,6 +21,10 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
+@app.get("/usr")
+async def root():
+    return {"message": "Hello World usr"}
+
 @app.post("/img")
 async def convert_image(file: UploadFile = File(...)):
 
